@@ -55,15 +55,15 @@
                 <div class="col">
                     <?php 
 
-                        $sql = "SELECT nazivTeme, opisTeme, datumKreiranja FROM tema";
+                        $sql = "SELECT naziv_teme, opis_teme, datum_kreiranja FROM tema";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()){
                                 echo "<div class='objava mt-2'>
-                                    <h2>" . $row["nazivTeme"] . "</h2>
-                                    <p> " . $row["opisTeme"] . "</p>
-                                    <small>" . $row["datumKreiranja"] . "</small>
+                                    <h2>" . $row["naziv_teme"] . "</h2>
+                                    <p> " . $row["opis_teme"] . "</p>
+                                    <small>" . $row["datum_kreiranja"] . "</small>
                                 </div>";
                             }
                         }

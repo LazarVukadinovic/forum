@@ -44,13 +44,11 @@
         
         
                 if ($result->num_rows > 0) {
-                    if($row["username"] == $_SESSION["user"] && password_verify($_SESSION["userPassword"], $row["password"]))
+                    if($row["korisnicko_ime"] == $_SESSION["user"] && password_verify($_SESSION["userPassword"], $row["lozinka"]))
                     {
                         $_SESSION["loggedIn"] = 1;
                         header('Location: http://nemanaziv.com/login/index.php');
                     }
-                    else
-                        echo "<script>alert('Nema vaseg naloga');</script>";
                 }
             }
         ?>

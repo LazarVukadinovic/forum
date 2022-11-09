@@ -5,7 +5,7 @@
 
     if(isset($_SESSION["loggedIn"])  && $_SESSION["loggedIn"] == 0)
     {
-        header('Location: http://nemanaziv.com/login/index.php');
+        header('Location: http://nemanaziv.com/index.php');
     }
 ?>
 
@@ -59,7 +59,7 @@
 
             if(!empty($naziv) && !empty($opis)){
                 $vreme = date("d.m.Y H:i");
-                $sql = "INSERT INTO tema (nazivTeme, opisTeme, datumKreiranja)
+                $sql = "INSERT INTO tema (naziv_teme, opis_teme, datum_kreiranja)
                 VALUES('" . $naziv . "', '" . $opis . "', '" . $vreme . "')";
                 $conn->query($sql);
                 $naziv = $opis = $vreme = "";

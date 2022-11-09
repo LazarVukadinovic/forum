@@ -34,31 +34,38 @@
                 <label class="mt-2" for="rpassword">Repeat Password: </label> 
                 <input class="mt-1" type="password" name="rpassword"> <span class="error">* <?php echo $userRPasswordErr;?></span>
                 <br>
+                <label class="mt-2" for="ime">Ime: </label> 
+                <input class="mt-1" type="text" name="ime"> <span class="error">* </span>
+                <br>
+                <label class="mt-2" for="prezime">Prezime: </label> 
+                <input class="mt-1" type="text" name="prezime"> <span class="error">* </span>
+                <br>
                 <input class="btn btn-primary mt-2" type="submit" value="SignUP">
                             
             </form>
         </div>
         <?php 
-            if(!empty($_SESSION["user"]) && !empty($_SESSION["userPassword"]) && !empty($rpassword) && ($_SESSION["userPassword"] == $rpassword))
+            if(!empty($_SESSION["user"]) && !empty($_SESSION["userPassword"]) && !empty($rpassword) && ($_SESSION["userPassword"] == $rpassword) && !empty($ime) && !empty($prezime))
             {
                 $user = $_SESSION["user"];
                 $password = $_SESSION["userPassword"];
-                $sqlCheck = "SELECT username FROM loginInfo WHERE username = '" . $user . "'";
+                $sqlCheck = "SELECT korisnicko_ime FROM korisnik WHERE korisnicko_ime = '" . $user . "'";
                 $resultCheck = $conn->query($sqlCheck);
                 if($resultCheck->num_rows > 0)
                 {
-                    $_SESSION["loggedIn"] = 1;
+                    $_SESSION["loggedIn"] = 0;
                     $_SESSION["user"] = "";
                     $_SESSION["userPassword"] = "";
                     echo "<script>alert('Nalog vec postoji');</script>";
                 }
                 else
                 {
-                    $sqlInsert = 'INSERT INTO loginInfo (username, password)
-                    VALUES("' . $user . '", "' . password_hash($password, PASSWORD_BCRYPT) . '")';
+                    echo "ulaz";
+                    $sqlInsert = 'INSERT INTO korisnik (korisnicko_ime, lozinka, ime, prezime)
+                    VALUES("' . $user . '", "' . password_hash($password, PASSWORD_BCRYPT) . '", "' . $ime . '", "' . $prezime .'" )';
                     $conn->query($sqlInsert);
                     $_SESSION["loggedIn"] = 1;
-                    header('Location: http://nemanaziv.com/login/index.php');
+                    header('Location: http://nemanaziv.com/index.php');
                 }
             }
         ?>
