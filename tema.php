@@ -7,10 +7,6 @@
     {
         header('Location: http://nemanaziv.com/index.php');
     }
-    if(isset($_SESSION["user"]) || empty($_SESSION["user"]))
-    {
-        header('Location: http://nemanaziv.com/index.php');
-    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +20,7 @@
         <title>Druga strana</title>
     </head>
     <body>
-        <a href="./index.php" class="btn btn-primary" >Home</a>
+        <?php include "./elements/navbar.php";?>
         <div class="container">
             <h1 class="text-center mt-4">Kreiraj temu</h1>
 

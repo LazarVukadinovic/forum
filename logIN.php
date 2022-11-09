@@ -19,9 +19,7 @@
     </head>
     <body>
         <?php include "./formSubmit.php";?>
-        <a href="./index.php" class="btn btn-primary" >Home</a>
-        <a href="./index.php" class="btn btn-primary" >Prijavi se</a>
-        <a href="./signUP.php" class="btn btn-primary">Registruj se</a>
+        <?php include "./elements/navbar.php";?>
         <div class="container">
             <h1 class="text-center mt-3">Login page</h1>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="text-center mt-5">
