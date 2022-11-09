@@ -36,25 +36,12 @@
     </head>
     <body>
         <?php include "./formSubmit.php";?>
-        <a href="./index.php" class="btn btn-primary" >Home</a>
-        <?php 
-            if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1)
-            {
-                echo '<a href="./tema.php" class="btn btn-primary">Napravi post</a>';
-                echo '<a href="./index.php" class="btn btn-primary">Odjavi se</a>';
-            }
-            else
-            {
-                echo '<a href="./logIN.php" class="btn btn-primary" >Prijavi se</a>';
-                echo '<a href="./signUP.php" class="btn btn-primary">Registruj se</a>';
-            }
-        ?>
+        <?php include "./elements/navbar.php";?>
         <div class="container">
             <div class="row">
                 <h1 class="mt-3 text-center">Dobrodosli</h1>
                 <div class="col">
-                    <?php 
-
+                    <?php
                         $sql = "SELECT naziv_teme, opis_teme, datum_kreiranja FROM tema";
                         $result = $conn->query($sql);
 

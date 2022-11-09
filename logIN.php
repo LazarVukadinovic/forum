@@ -38,7 +38,7 @@
         <?php 
             if(!empty($_SESSION["user"]) && !empty($_SESSION["userPassword"]))
             {
-                $sql = "SELECT username, password FROM loginInfo WHERE username = '" . $_SESSION["user"] . "'";
+                $sql = "SELECT korisnicko_ime, lozinka FROM korisnik WHERE korisnicko_ime = '" . $_SESSION["user"] . "'";
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
         
@@ -47,7 +47,7 @@
                     if($row["korisnicko_ime"] == $_SESSION["user"] && password_verify($_SESSION["userPassword"], $row["lozinka"]))
                     {
                         $_SESSION["loggedIn"] = 1;
-                        header('Location: http://nemanaziv.com/login/index.php');
+                        header('Location: http://nemanaziv.com/index.php');
                     }
                 }
             }

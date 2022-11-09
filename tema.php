@@ -3,7 +3,11 @@
     session_start();
     include "./connection.php";
 
-    if(isset($_SESSION["loggedIn"])  && $_SESSION["loggedIn"] == 0)
+    if(isset($_SESSION["loggedIn"])  || $_SESSION["loggedIn"] == 0)
+    {
+        header('Location: http://nemanaziv.com/index.php');
+    }
+    if(isset($_SESSION["user"]) || empty($_SESSION["user"]))
     {
         header('Location: http://nemanaziv.com/index.php');
     }

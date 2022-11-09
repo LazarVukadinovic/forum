@@ -41,14 +41,7 @@ include "./connection.php";
             else
                 $userRPasswordErr = "Morate ponovo uneti password";
 
-            
         }
-        // if(!empty($_POST["ime"]) && !empty($_POST["prezime"]) && ("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" == "http://nemanaziv.com/login/signUP.php"))
-        // {
-            
-        //     $ime = test_input($_POST["ime"]);
-        //     $prezime = test_input($_POST["prezime"]);
-        // }
         
 
     }
