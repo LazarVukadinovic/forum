@@ -3,7 +3,7 @@
     session_start();
     include "./connection.php";
 
-    if(isset($_SESSION["loggedIn"])  || $_SESSION["loggedIn"] == 0)
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 0)
     {
         header('Location: http://nemanaziv.com/index.php');
     }
@@ -17,25 +17,47 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <title>Druga strana</title>
+        <title>Tema</title>
+        <style>
+            .btn-colorc{
+                background-color: #0e1c36 !important;
+                color: #fff !important;
+                
+            }
+            .cardbody-color{
+                background-color: #ebf2fa;
+            }
+            a{
+                text-decoration: none;
+            }
+        </style>
     </head>
     <body>
         <?php include "./elements/navbar.php";?>
-        <div class="container">
-            <h1 class="text-center mt-4">Kreiraj temu</h1>
-
+        <div class="container mt-5">
             <div class="row">
-                <div class="col">
-                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="text-center mt-5"> 
-                        <label class="mt-2" for="naziv">Naziv: </label>  
-                        <input class="mt-1" type="text" name="naziv"> <span class="error">*</span>
-                        <br>
-                        <label class="mt-2" for="opis">Opis: </label> 
-                        <input class="mt-1" type="text" name="opis"> <span class="error">* </span>
-                        <br>
-                        <input class="btn btn-primary mt-2" type="submit" value="Kreiraj">
-                    </form>
+            <div class="col-md-6 offset-md-3">
+                <div class="card my-5">
+
+                <form  method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="card-body cardbody-color p-lg-5">
+
+                    <div class="text-center">
+                        <h3>KREIRAJ TEMU</h3>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="naziv" aria-describedby="emailHelp" placeholder="Naziv teme">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="opis" placeholder="Opis teme">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-colorc px-5 mb-4 w-100">Kreiraj</button>
+                    </div>
+                </form>
                 </div>
+
+            </div>
             </div>
         </div>
 
@@ -58,9 +80,9 @@
             }
 
             if(!empty($naziv) && !empty($opis)){
-                $vreme = date("d.m.Y H:i");
-                $sql = "INSERT INTO tema (naziv_teme, opis_teme, datum_kreiranja)
-                VALUES('" . $naziv . "', '" . $opis . "', '" . $vreme . "')";
+                $datum = date("Y-m-d H:i");
+                $sql = "INSERT INTO tema (naziv_teme, opis_teme, datum_kreiranja, kreator)
+                VALUES('" . $naziv . "', '" . $opis . "', '" . $datum . "', '" . $_SESSION["user"] . "')";
                 $conn->query($sql);
                 $naziv = $opis = $vreme = "";
             }
