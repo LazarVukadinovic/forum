@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2022 at 09:20 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 11, 2022 at 12:15 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,8 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`) VALUES
-('admin@gmail.com', '$2y$10$vb1dHca1SGeOhSWMoiBrVOSygZYxG8E24fIEargkVM4E51Gy/Dbae', 'Admin', 'adminovic');
+('admin@gmail.com', '$2y$10$vb1dHca1SGeOhSWMoiBrVOSygZYxG8E24fIEargkVM4E51Gy/Dbae', 'Admin', 'adminovic'),
+('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic');
 
 -- --------------------------------------------------------
 
@@ -65,15 +66,17 @@ CREATE TABLE `tema` (
   `id` int(11) NOT NULL,
   `naziv_teme` varchar(50) NOT NULL,
   `opis_teme` text NOT NULL,
-  `datum_kreiranja` varchar(100) NOT NULL
+  `datum_kreiranja` datetime NOT NULL,
+  `kreator` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tema`
 --
 
-INSERT INTO `tema` (`id`, `naziv_teme`, `opis_teme`, `datum_kreiranja`) VALUES
-(1, 'tema1', 'tema1', '09.11.2022 08:47');
+INSERT INTO `tema` (`id`, `naziv_teme`, `opis_teme`, `datum_kreiranja`, `kreator`) VALUES
+(14, 'nova tema', 'Proba', '2022-11-11 00:00:00', 'admin@gmail.com'),
+(15, 'Proba2', 'Proba', '2022-11-11 00:08:00', 'admin@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -106,7 +109,7 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT for table `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables
