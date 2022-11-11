@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 12:15 AM
+-- Generation Time: Nov 11, 2022 at 03:17 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -32,8 +32,18 @@ CREATE TABLE `komentari` (
   `id_tema` int(11) NOT NULL,
   `ime_kreatora` varchar(100) NOT NULL,
   `opis` text NOT NULL,
-  `datum` varchar(100) NOT NULL
+  `datum` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `komentari`
+--
+
+INSERT INTO `komentari` (`id_kom`, `id_tema`, `ime_kreatora`, `opis`, `datum`) VALUES
+(1, 15, 'admin@gmail.com', 'asddsaasd', '2022-11-11 14:31:00'),
+(2, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:33:00'),
+(3, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:34:00'),
+(4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00');
 
 -- --------------------------------------------------------
 
@@ -104,6 +114,12 @@ ALTER TABLE `tema`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `komentari`
+--
+ALTER TABLE `komentari`
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tema`
