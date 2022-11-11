@@ -72,8 +72,12 @@
                     if($row["korisnicko_ime"] == $_SESSION["user"] && password_verify($_SESSION["userPassword"], $row["lozinka"]))
                     {
                         $_SESSION["loggedIn"] = 1;
-                        header('Location: http://nemanaziv.com/index.php');
+                        if(isset($_SESSION["idTeme"]) && !empty($_SESSION["idTeme"]))
+                            header('Location: http://nemanaziv.com/diskusija.php?id=' . $_SESSION["idTeme"]); 
+                        else
+                            header("location:/index.php"); 
                     }
+                    
                 }
             }
         ?>
