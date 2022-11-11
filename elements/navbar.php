@@ -12,9 +12,9 @@
           </a>
           <ul class="dropdown-menu">
             <?php
-              if(isset($_SESSION["user"]) && !empty($_SESSION["user"]))
+              if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1)
               {
-                echo '<li><a class="dropdown-item" href="#">Nalog</a></li>';
+                echo '<li><a class="dropdown-item" href="../account.php">Nalog</a></li>';
                 echo '<li><a class="dropdown-item" href="../handling/logout.php">Odjava</a></li>';
                 $_SESSION["currentURL"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               }
@@ -26,7 +26,7 @@
             ?>
           </ul>
           <?php 
-            if(isset($_SESSION["user"]) && !empty($_SESSION["user"]))
+            if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1)
             {
               echo '<li class="nav-item">
               <a class="nav-link" href="../tema.php">Napravi temu</a>

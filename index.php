@@ -7,10 +7,11 @@
         if($_SESSION["loggedIn"] == 0)
         {
             $_SESSION["user"] = "";
-            $_SESSION["password"] = "";
+            
         }
         
     }
+    $_SESSION["userPassword"] = "";
     $_SESSION["idTeme"] = "";
 ?>
 

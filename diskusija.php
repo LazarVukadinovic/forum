@@ -3,14 +3,10 @@
     session_start();
     include "./connection.php";
     $_SESSION["idTeme"] = $_GET["id"];
-    if(isset($_SESSION["loggedIn"]))
+    
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 0)
     {
-        if($_SESSION["loggedIn"] == 0)
-        {
-            $_SESSION["user"] = "";
-            $_SESSION["password"] = "";
-        }
-        
+        header('Location: http://nemanaziv.com/index.php');
     }
 
 ?>
@@ -91,7 +87,7 @@
                                     <small>' . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . '</small>
                                     <p class="txt">' . $row["opis_teme"] . '</p>';
                                     if($row["kreator"] == $_SESSION["user"])
-                                        echo '<a class="delete" href="#">X</a>';
+                                        echo '<a class="delete" href="./handling/deletePost.php?id=' . $row["id"] . '">X</a>';
                                     echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -122,7 +118,7 @@
                 }
 
                 // *ispis komentara
-                $sql = "SELECT id_tema, ime_kreatora, opis, datum FROM komentari WHERE id_tema = " . $_SESSION["idTeme"] . " ORDER BY datum DESC";
+                $sql = "SELECT id_kom, id_tema, ime_kreatora, opis, datum FROM komentari WHERE id_tema = " . $_SESSION["idTeme"] . " ORDER BY datum DESC";
                 $result = $conn->query($sql);
                 
 
@@ -139,7 +135,7 @@
                                 <small>' . date_format(date_create($row["datum"]), "d.m.Y H:i") . '</small>
                                 <p class="txt">' . $row["opis"] . '</p>';
                                 if($row["ime_kreatora"] == $_SESSION["user"])
-                                    echo '<a class="delete" href="#">X</a>';
+                                    echo '<a class="delete" href="./handling/deleteComment.php?id=' . $row["id_kom"] . '">X</a>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
