@@ -55,6 +55,13 @@
                 color: #fff !important;
                 
             }
+            .delete{
+                display: block;
+                float:right;
+                color: red;
+                font-weight: 800;
+                text-decoration: none;
+            }
         </style>
         </head>
     <body>
@@ -62,6 +69,7 @@
 
         <div class="container mt-4">
         <?php
+                //*ispis posta
                 $sql = "SELECT id, naziv_teme, opis_teme, datum_kreiranja, kreator FROM tema WHERE id = " . $_SESSION["idTeme"];
                 $result = $conn->query($sql);
 
@@ -81,20 +89,22 @@
                                 echo '<div class="objava">
                                     <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                     <small>' . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . '</small>
-                                    <p class="txt">' . $row["opis_teme"] . '</p>
-                                </div>';
+                                    <p class="txt">' . $row["opis_teme"] . '</p>';
+                                    if($row["kreator"] == $_SESSION["user"])
+                                        echo '<a class="delete" href="#">X</a>';
+                                    echo '</div>';
                             echo '</div>';
                         echo '</div>';
                    }
                 }
             ?>
-
             <div class="row mt-5">
                 <div class="col">
                     <h4 class="text-center">KOMENTARI</h4>
                 </div>
             </div>
             <?php
+                //*login za komentare
                 if(isset($_SESSION["user"]) && !empty($_SESSION["user"]))
                 {
                     include "./elements/createComment.php";
@@ -111,7 +121,7 @@
                     echo '</div>';
                 }
 
-
+                // *ispis komentara
                 $sql = "SELECT id_tema, ime_kreatora, opis, datum FROM komentari WHERE id_tema = " . $_SESSION["idTeme"] . " ORDER BY datum DESC";
                 $result = $conn->query($sql);
                 
@@ -127,8 +137,10 @@
                                 echo '<div class="objava">
                                 <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                 <small>' . date_format(date_create($row["datum"]), "d.m.Y H:i") . '</small>
-                                <p class="txt">' . $row["opis"] . '</p>
-                                </div>';
+                                <p class="txt">' . $row["opis"] . '</p>';
+                                if($row["ime_kreatora"] == $_SESSION["user"])
+                                    echo '<a class="delete" href="#">X</a>';
+                                echo '</div>';
                             echo '</div>';
                         echo '</div>';
                 }

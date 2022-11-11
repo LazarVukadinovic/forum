@@ -1,5 +1,5 @@
 <?php
-include "./connection.php";
+include "../connection.php";
 session_start();
     $komentar = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

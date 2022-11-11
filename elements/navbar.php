@@ -15,7 +15,7 @@
               if(isset($_SESSION["user"]) && !empty($_SESSION["user"]))
               {
                 echo '<li><a class="dropdown-item" href="#">Nalog</a></li>';
-                echo '<li><a class="dropdown-item" href="../logout.php">Odjava</a></li>';
+                echo '<li><a class="dropdown-item" href="../handling/logout.php">Odjava</a></li>';
                 $_SESSION["currentURL"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               }
               else

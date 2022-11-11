@@ -51,7 +51,7 @@
         
     </head>
     <body>
-        <?php include "./formSubmit.php";?>
+        <?php include "./handling/formSubmit.php";?>
         <?php include "./elements/navbar.php";?>
         <div class="container mt-3">
             <?php

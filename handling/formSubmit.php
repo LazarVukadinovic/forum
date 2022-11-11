@@ -1,5 +1,4 @@
 <?php 
-include "./connection.php";
     $userErr = $userPasswordErr = $userRPasswordErr = "";
     $ime = $prezime = "";
 

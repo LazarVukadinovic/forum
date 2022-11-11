@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
 
-        <form  method="POST" action="./diskusijaSubmit.php" class="card-body cardbody-color p-lg-5">
+        <form  method="POST" action="../handling/diskusijaSubmit.php" class="card-body cardbody-color p-lg-5">
 
             <div>
                 <h5>Postavi komentar:</h5>
