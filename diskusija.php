@@ -4,10 +4,6 @@
     include "./connection.php";
     $_SESSION["idTeme"] = $_GET["id"];
     
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 0)
-    {
-        header('Location: http://nemanaziv.com/index.php');
-    }
 
 ?>
 
