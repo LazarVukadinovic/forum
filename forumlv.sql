@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 03:17 PM
+-- Generation Time: Nov 11, 2022 at 06:54 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,10 +40,9 @@ CREATE TABLE `komentari` (
 --
 
 INSERT INTO `komentari` (`id_kom`, `id_tema`, `ime_kreatora`, `opis`, `datum`) VALUES
-(1, 15, 'admin@gmail.com', 'asddsaasd', '2022-11-11 14:31:00'),
 (2, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:33:00'),
-(3, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:34:00'),
-(4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00');
+(4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00'),
+(5, 15, 'test@gmail.com', 'asdaffddfsdfshrjdhgsff', '2022-11-11 16:27:00');
 
 -- --------------------------------------------------------
 
@@ -63,7 +62,7 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`) VALUES
-('admin@gmail.com', '$2y$10$vb1dHca1SGeOhSWMoiBrVOSygZYxG8E24fIEargkVM4E51Gy/Dbae', 'Admin', 'adminovic'),
+('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic'),
 ('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic');
 
 -- --------------------------------------------------------
@@ -96,8 +95,7 @@ INSERT INTO `tema` (`id`, `naziv_teme`, `opis_teme`, `datum_kreiranja`, `kreator
 -- Indexes for table `komentari`
 --
 ALTER TABLE `komentari`
-  ADD PRIMARY KEY (`id_kom`),
-  ADD KEY `FK_tema` (`id_tema`);
+  ADD PRIMARY KEY (`id_kom`);
 
 --
 -- Indexes for table `korisnik`
@@ -119,23 +117,13 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT for table `komentari`
 --
 ALTER TABLE `komentari`
-  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `komentari`
---
-ALTER TABLE `komentari`
-  ADD CONSTRAINT `FK_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
