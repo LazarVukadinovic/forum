@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-3 mt-4">
-                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['slika']); ?>" /> 
+                    <img src="./avatars/avatar.png" /> 
                 </div>
                 <div class="col-md-8">
                     <h2 class="mb-3">DETALJI NALOGA</h2>

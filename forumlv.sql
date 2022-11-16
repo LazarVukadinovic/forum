@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 06:54 PM
+-- Generation Time: Nov 16, 2022 at 09:29 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -42,7 +42,9 @@ CREATE TABLE `komentari` (
 INSERT INTO `komentari` (`id_kom`, `id_tema`, `ime_kreatora`, `opis`, `datum`) VALUES
 (2, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:33:00'),
 (4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00'),
-(5, 15, 'test@gmail.com', 'asdaffddfsdfshrjdhgsff', '2022-11-11 16:27:00');
+(11, 14, 'admin@gmail.com', 'dfhdgdfgdfgdfg', '2022-11-16 07:36:00'),
+(12, 19, 'pedja@gmail.com', 'Nemoj neko da je obrisao', '2022-11-16 08:05:00'),
+(13, 19, 'admin@gmail.com', 'nema bolje', '2022-11-16 08:06:00');
 
 -- --------------------------------------------------------
 
@@ -54,16 +56,19 @@ CREATE TABLE `korisnik` (
   `korisnicko_ime` varchar(100) NOT NULL,
   `lozinka` varchar(100) NOT NULL,
   `ime` varchar(50) NOT NULL,
-  `prezime` varchar(50) NOT NULL
+  `prezime` varchar(50) NOT NULL,
+  `slika` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `korisnik`
 --
 
-INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`) VALUES
-('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic'),
-('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic');
+INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`, `slika`) VALUES
+('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic', ''),
+('pedja@gmail.com', '$2y$10$GSQnboa7924dOMn.RLXkQe7y7ujq0UH7jM6IY2LX0pTIkvpMj.lKO', 'Siu', 'Siuuuuuuuuuuuuu', ''),
+('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic', ''),
+('verka@gmail.com', '$2y$10$qs4ZYDRz3gQquLWqQfdq0uZz95fDq8XCtZv2WIOmVQD2MHNAvRlJS', 'Verka', 'Zverka', '');
 
 -- --------------------------------------------------------
 
@@ -85,7 +90,9 @@ CREATE TABLE `tema` (
 
 INSERT INTO `tema` (`id`, `naziv_teme`, `opis_teme`, `datum_kreiranja`, `kreator`) VALUES
 (14, 'nova tema', 'Proba', '2022-11-11 00:00:00', 'admin@gmail.com'),
-(15, 'Proba2', 'Proba', '2022-11-11 00:08:00', 'admin@gmail.com');
+(15, 'Proba2', 'Proba', '2022-11-11 00:08:00', 'admin@gmail.com'),
+(19, 'IDe gass', 'siuuuuuuuuuuuuuuuu', '2022-11-16 08:05:00', 'pedja@gmail.com'),
+(20, 'OET', 'Osnove elektrotehnike', '2022-11-16 09:09:00', 'verka@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +124,13 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT for table `komentari`
 --
 ALTER TABLE `komentari`
-  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
