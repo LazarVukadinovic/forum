@@ -24,31 +24,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pocetna strana</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <style>
-            .objava{
-                width: 100%;
-                background-color: #ebf2fa;
-                border: 2px solid black;
-                border-radius: 5px;
-                padding: 15px 20px 10px 20px;
-            }
-            .objava h5{
-                display:inline-block;
-            }
-            .objava p{
-                display:inline;
-            }
-            small{
-                opacity: 0.8;
-            }
-            .objava a{
-                text-decoration: none !important;
-                color: #000 !important;
-            }
-            .objava a:hover{
-                text-decoration: underline !important;
-            }
-        </style>
+        <link rel="stylesheet" href="./styles/style.css">
         
     </head>
     <body>

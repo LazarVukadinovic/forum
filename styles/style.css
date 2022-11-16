@@ -1,0 +1,23 @@
+.objava{
+    width: 100%;
+    background-color: #ebf2fa;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 15px 20px 10px 20px;
+}
+.objava h5{
+    display:inline-block;
+}
+.objava p{
+    display:inline;
+}
+small{
+    opacity: 0.8;
+}
+.objava a{
+    text-decoration: none !important;
+    color: #000 !important;
+}
+.objava a:hover{
+    text-decoration: underline !important;
+}

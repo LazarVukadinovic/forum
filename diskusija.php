@@ -16,45 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <title>Diskusija</title>
-        <style>
-            .objava{
-                width: 80%;
-                background-color: #ebf2fa;
-                border: 2px solid black;
-                border-radius: 5px;
-                padding: 15px 20px 10px 20px;
-                display: inline-block;
-            }
-            .autor{
-                font-size: 18px;
-                margin-bottom: 0;
-                font-weight: 600;
-            }
-            small{
-                font-size: 14px;
-                opacity: 0.8;
-            }
-            .txt{
-                margin-bottom: 0;
-            }
-            img{
-                max-width: 64px;
-                margin-top: -60px;
-                margin-right: 10px;
-            }
-            .btn-colorc{
-                background-color: #0e1c36 !important;
-                color: #fff !important;
-                
-            }
-            .delete{
-                display: block;
-                float:right;
-                color: red;
-                font-weight: 800;
-                text-decoration: none;
-            }
-        </style>
+        <link rel="stylesheet" href="./styles/diskusija.css">
         </head>
     <body>
         <?php include "./elements/navbar.php";?>
@@ -82,6 +44,7 @@
                                     <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                     <small>' . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . '</small>
                                     <p class="txt">' . $row["opis_teme"] . '</p>';
+                                    if(isset($_SESSION["user"]))
                                     if($row["kreator"] == $_SESSION["user"])
                                         echo '<a class="delete" href="./handling/deletePost.php?id=' . $row["id"] . '">X</a>';
                                     echo '</div>';
@@ -130,6 +93,7 @@
                                 <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                 <small>' . date_format(date_create($row["datum"]), "d.m.Y H:i") . '</small>
                                 <p class="txt">' . $row["opis"] . '</p>';
+                                if(isset($_SESSION["user"]))
                                 if($row["ime_kreatora"] == $_SESSION["user"])
                                     echo '<a class="delete" href="./handling/deleteComment.php?id=' . $row["id_kom"] . '">X</a>';
                                 echo '</div>';
