@@ -74,8 +74,8 @@
                 else
                 {
                     echo "ulaz";
-                    $sqlInsert = 'INSERT INTO korisnik (korisnicko_ime, lozinka, ime, prezime)
-                    VALUES("' . $user . '", "' . password_hash($password, PASSWORD_BCRYPT) . '", "' . $ime . '", "' . $prezime .'" )';
+                    $sqlInsert = 'INSERT INTO korisnik (korisnicko_ime, lozinka, ime, prezime, slika)
+                    VALUES("' . $user . '", "' . password_hash($password, PASSWORD_BCRYPT) . '", "' . $ime . '", "' . $prezime .'", "avatar.png" )';
                     $conn->query($sqlInsert);
                     $_SESSION["loggedIn"] = 1;
                     header('Location: http://nemanaziv.com/index.php');

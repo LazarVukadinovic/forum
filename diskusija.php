@@ -39,7 +39,7 @@
                         $podaci = $result_kreator->fetch_assoc();
                         echo '<div class="row mt-3">';
                             echo '<div class="col">';
-                                echo '<img src="data:image/jpg;charset=utf8;base64, ' . base64_encode($podaci['slika']) . '" />';
+                                echo '<img src="avatars/' . $podaci["slika"] . '" />';
                                 echo '<div class="objava">
                                     <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                     <small>' . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . '</small>

@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-3 mt-4">
-                    <img src="./avatars/avatar.png" /> 
+                    <img src="./avatars/<?php echo $row["slika"]?>" /> 
                 </div>
                 <div class="col-md-8">
                     <h2 class="mb-3">DETALJI NALOGA</h2>
@@ -61,10 +61,11 @@
                             <p>Korisnicko ime: <span><?php echo $_SESSION["user"]?></span></p>
                             <p>Ime: <span><?php echo $row["ime"]?></span></p>
                             <p>Prezime: <span><?php echo $row["prezime"]?></span></p>
+
                             <form action="./handling/uploadImage.php" method="post" enctype="multipart/form-data">
-                                <label>Ubaci profilnu fotografiju:</label>
+                                <label for="image">Ubaci profilnu fotografiju:</label>
                                 <div class="mb-2">
-                                    <input type="file" name="image" accept="image/*">
+                                    <input type="file" name="uploadedFile" accept="image/*">
                                 </div>
                                 <div class="mb-2">
                                     <input class="btn btn-colorc px-5 mb-4" type="submit" name="submit" value="Postavi">
