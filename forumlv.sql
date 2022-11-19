@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 09:29 AM
+-- Generation Time: Nov 19, 2022 at 07:44 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,8 @@ INSERT INTO `komentari` (`id_kom`, `id_tema`, `ime_kreatora`, `opis`, `datum`) V
 (4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00'),
 (11, 14, 'admin@gmail.com', 'dfhdgdfgdfgdfg', '2022-11-16 07:36:00'),
 (12, 19, 'pedja@gmail.com', 'Nemoj neko da je obrisao', '2022-11-16 08:05:00'),
-(13, 19, 'admin@gmail.com', 'nema bolje', '2022-11-16 08:06:00');
+(13, 19, 'admin@gmail.com', 'nema bolje', '2022-11-16 08:06:00'),
+(14, 20, 'nov@gmail.com', 'Zdravo', '2022-11-19 19:42:00');
 
 -- --------------------------------------------------------
 
@@ -65,10 +66,11 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`, `slika`) VALUES
-('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic', ''),
-('pedja@gmail.com', '$2y$10$GSQnboa7924dOMn.RLXkQe7y7ujq0UH7jM6IY2LX0pTIkvpMj.lKO', 'Siu', 'Siuuuuuuuuuuuuu', ''),
-('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic', ''),
-('verka@gmail.com', '$2y$10$qs4ZYDRz3gQquLWqQfdq0uZz95fDq8XCtZv2WIOmVQD2MHNAvRlJS', 'Verka', 'Zverka', '');
+('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic', 'admin@gmail.com.jpg'),
+('nov@gmail.com', '$2y$10$0w4EGbZlPIaH0kEYPm6ZlO1qTOByz7TpWGsee6xFV4AgNfJlOD5Ta', 'Nov User', 'Newbie', 'avatar.png'),
+('pedja@gmail.com', '$2y$10$GSQnboa7924dOMn.RLXkQe7y7ujq0UH7jM6IY2LX0pTIkvpMj.lKO', 'Siu', 'Siuuuuuuuuuuuuu', 'avatar.png'),
+('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic', 'avatar.png'),
+('verka@gmail.com', '$2y$10$qs4ZYDRz3gQquLWqQfdq0uZz95fDq8XCtZv2WIOmVQD2MHNAvRlJS', 'Verka', 'Zverka', 'avatar2.png');
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT for table `komentari`
 --
 ALTER TABLE `komentari`
-  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tema`
