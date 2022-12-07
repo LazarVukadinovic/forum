@@ -1,7 +1,5 @@
 Dodati:
 Admin nalog
-Link na index strani na ime autora i prikaz njegovih postova
 
 Ispravak:
-DB -> korisnik -> slika (videti da li moze bez date kolone, samo preko $_SESSION["user"] . '.jpg')
-Proveriti sigurnost lozinke u SESSION 
+Proveriti sigurnost lozinke u SESSION
