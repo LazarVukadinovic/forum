@@ -46,7 +46,7 @@
                                 echo "<div class='objava mt-2'>
                                     <a href='./diskusija.php?id=" . $row["id"] . "'><h5>" . $row["naziv_teme"] . "</h5>
                                     <p> ● " . $row["opis_teme"] . "</p></a>
-                                    <small style='display:block; float:right'>" . $podaci["ime"] . " " . $podaci["prezime"] . " - " . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . "</small>
+                                    <small style='display:block; float:right'> <a href='./prikaz.php?user=" . $row["kreator"] . "'>" . $podaci["ime"] . " " . $podaci["prezime"] . "</a> - " . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . "</small>
                                 </div>";
                             echo '</div>';
                         echo '</div>';
