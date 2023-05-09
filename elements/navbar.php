@@ -12,11 +12,10 @@
           </a>
           <ul class="dropdown-menu">
             <?php
-              if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1)
+              if(isset($_SESSION["username"]))
               {
-                echo '<li><a class="dropdown-item" href="../account.php">Nalog</a></li>';
-                echo '<li><a class="dropdown-item" href="../handling/logout.php">Odjava</a></li>';
-                $_SESSION["currentURL"] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                echo '<li><a class="dropdown-item" href="./account.php">Nalog</a></li>';
+                echo '<li><a class="dropdown-item" href="./handlers/logout.php">Odjava</a></li>';
               }
               else
               {
@@ -26,10 +25,10 @@
             ?>
           </ul>
           <?php 
-            if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 1)
+            if(isset($_SESSION["username"]))
             {
               echo '<li class="nav-item">
-              <a class="nav-link" href="../tema.php">Napravi temu</a>
+              <a class="nav-link" href="./tema.php">Napravi temu</a>
             </li>';
             }
           ?>

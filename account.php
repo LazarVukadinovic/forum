@@ -1,9 +1,9 @@
 <?php
     session_start();
     include "./connection.php";
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 0)
+    if(!isset($_SESSION["username"]))
     {
-        header('Location: http://nemanaziv.com/index.php');
+        header('Location: ./');
     }
 ?>
 
@@ -28,14 +28,14 @@
             if (!empty($_POST["rpassword"]))
                 $rpassword = test_input($_POST["rpassword"]);
         }
-        $sql = "SELECT korisnicko_ime, lozinka, ime, prezime, slika FROM korisnik WHERE korisnicko_ime='" . $_SESSION["user"] . "'";
+        $sql = "SELECT korisnicko_ime, lozinka, ime, prezime, slika FROM korisnik WHERE korisnicko_ime='" . $_SESSION["username"] . "'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
 
         if(isset($spassword) && isset($npassword) && isset($rpassword))
         if((password_verify($spassword, $row["lozinka"]) && !empty($npassword) && !empty($rpassword)))
         {
-            $sql = "UPDATE korisnik SET lozinka = '" . password_hash($npassword, PASSWORD_BCRYPT) . "' WHERE korisnicko_ime = '" . $_SESSION["user"] . "'";
+            $sql = "UPDATE korisnik SET lozinka = '" . password_hash($npassword, PASSWORD_BCRYPT) . "' WHERE korisnicko_ime = '" . $_SESSION["username"] . "'";
             $result = $conn->query($sql);
         }
 
@@ -58,7 +58,7 @@
                     <h2 class="mb-3">DETALJI NALOGA</h2>
                     <div class="row">
                         <div class="col-md-5">
-                            <p>Korisnicko ime: <span><?php echo $_SESSION["user"]?></span></p>
+                            <p>Korisnicko ime: <span><?php echo $_SESSION["username"]?></span></p>
                             <p>Ime: <span><?php echo $row["ime"]?></span></p>
                             <p>Prezime: <span><?php echo $row["prezime"]?></span></p>
 
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <?php 
-               $sql = "SELECT id, naziv_teme, opis_teme, datum_kreiranja, kreator FROM tema WHERE kreator = '" . $_SESSION["user"] . "' ORDER BY datum_kreiranja DESC";
+               $sql = "SELECT id, naziv_teme, opis_teme, datum_kreiranja, kreator FROM tema WHERE kreator = '" . $_SESSION["username"] . "' ORDER BY datum_kreiranja DESC";
                $result = $conn->query($sql);
                
 

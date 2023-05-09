@@ -7,14 +7,16 @@ session_start();
         {
             $komentar = test_input($_POST["komentar"]);
         }
+
+        
     }
     if(!empty($komentar))
     {
         $datum = date("Y-m-d H:i");
         $sql = "INSERT INTO komentari (id_tema, ime_kreatora, opis, datum)
-        VALUES(" . $_SESSION["idTeme"] . ", '" . $_SESSION["user"] . "', '" . $komentar . "', '" . $datum . "')";
+        VALUES(" . $_GET["id"] . ", '" . $_SESSION["username"] . "', '" . $komentar . "', '" . $datum . "')";
         $result = $conn->query($sql);
-        header("Location: http://nemanaziv.com/diskusija.php?id=" . $_SESSION["idTeme"]);
+        header("Location: ../diskusija.php?id=" . $_GET["id"]);
     }
 
 function test_input($data) {

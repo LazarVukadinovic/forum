@@ -2,9 +2,7 @@
     date_default_timezone_set('Europe/Belgrade');
     session_start();
     include "./connection.php";
-    $_SESSION["idTeme"] = $_GET["id"];
     
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +22,7 @@
         <div class="container mt-4">
         <?php
                 //*ispis posta
-                $sql = "SELECT id, naziv_teme, opis_teme, datum_kreiranja, kreator FROM tema WHERE id = " . $_SESSION["idTeme"];
+                $sql = "SELECT id, naziv_teme, opis_teme, datum_kreiranja, kreator FROM tema WHERE id = " . $_GET["id"];
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -44,9 +42,9 @@
                                     <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                     <small>' . date_format(date_create($row["datum_kreiranja"]), "d.m.Y H:i") . '</small>
                                     <p class="txt">' . $row["opis_teme"] . '</p>';
-                                    if(isset($_SESSION["user"]))
-                                    if($row["kreator"] == $_SESSION["user"])
-                                        echo '<a class="delete" href="./handling/deletePost.php?id=' . $row["id"] . '">X</a>';
+                                    if(isset($_SESSION["username"]))
+                                    if($row["kreator"] == $_SESSION["username"])
+                                        echo '<a class="delete" href="./handlers/deletePost.php?id=' . $row["id"] . '">X</a>';
                                     echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -60,7 +58,7 @@
             </div>
             <?php
                 //*login za komentare
-                if(isset($_SESSION["user"]) && !empty($_SESSION["user"]))
+                if(isset($_SESSION["username"]))
                 {
                     include "./elements/createComment.php";
                 }
@@ -77,7 +75,7 @@
                 }
 
                 // *ispis komentara
-                $sql = "SELECT id_kom, id_tema, ime_kreatora, opis, datum FROM komentari WHERE id_tema = " . $_SESSION["idTeme"] . " ORDER BY datum DESC";
+                $sql = "SELECT id_kom, id_tema, ime_kreatora, opis, datum FROM komentari WHERE id_tema = " . $_GET["id"] . " ORDER BY datum DESC";
                 $result = $conn->query($sql);
                 
 
@@ -93,9 +91,9 @@
                                 <p class="autor">' . $podaci["ime"] . ' ' . $podaci["prezime"] . '</p>
                                 <small>' . date_format(date_create($row["datum"]), "d.m.Y H:i") . '</small>
                                 <p class="txt">' . $row["opis"] . '</p>';
-                                if(isset($_SESSION["user"]))
-                                if($row["ime_kreatora"] == $_SESSION["user"])
-                                    echo '<a class="delete" href="./handling/deleteComment.php?id=' . $row["id_kom"] . '">X</a>';
+                                if(isset($_SESSION["username"]))
+                                if($row["ime_kreatora"] == $_SESSION["username"])
+                                    echo '<a class="delete" href="./handlers/deleteComment.php?id=' . $row["id_kom"] . '&idP=' . $_GET['id'] . '">X</a>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';

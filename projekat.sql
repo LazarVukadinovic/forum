@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2022 at 07:44 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 09, 2023 at 05:52 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `forumlv`
+-- Database: `projekat`
 --
 
 -- --------------------------------------------------------
@@ -33,19 +33,7 @@ CREATE TABLE `komentari` (
   `ime_kreatora` varchar(100) NOT NULL,
   `opis` text NOT NULL,
   `datum` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `komentari`
---
-
-INSERT INTO `komentari` (`id_kom`, `id_tema`, `ime_kreatora`, `opis`, `datum`) VALUES
-(2, 15, 'admin@gmail.com', 'asdasdasdasdasd', '2022-11-11 14:33:00'),
-(4, 15, 'admin@gmail.com', 'jkhmbfgvdcs', '2022-11-11 14:34:00'),
-(11, 14, 'admin@gmail.com', 'dfhdgdfgdfgdfg', '2022-11-16 07:36:00'),
-(12, 19, 'pedja@gmail.com', 'Nemoj neko da je obrisao', '2022-11-16 08:05:00'),
-(13, 19, 'admin@gmail.com', 'nema bolje', '2022-11-16 08:06:00'),
-(14, 20, 'nov@gmail.com', 'Zdravo', '2022-11-19 19:42:00');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,18 +47,14 @@ CREATE TABLE `korisnik` (
   `ime` varchar(50) NOT NULL,
   `prezime` varchar(50) NOT NULL,
   `slika` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `korisnik`
 --
 
 INSERT INTO `korisnik` (`korisnicko_ime`, `lozinka`, `ime`, `prezime`, `slika`) VALUES
-('admin@gmail.com', '$2y$10$7o59fdxN9CP9ht3yQj27yuErkEUO66n.b3d/f4W10AWErl9/1lSvm', 'Admin', 'adminovic', 'admin@gmail.com.jpg'),
-('nov@gmail.com', '$2y$10$0w4EGbZlPIaH0kEYPm6ZlO1qTOByz7TpWGsee6xFV4AgNfJlOD5Ta', 'Nov User', 'Newbie', 'avatar.png'),
-('pedja@gmail.com', '$2y$10$GSQnboa7924dOMn.RLXkQe7y7ujq0UH7jM6IY2LX0pTIkvpMj.lKO', 'Siu', 'Siuuuuuuuuuuuuu', 'avatar.png'),
-('test@gmail.com', '$2y$10$4I3YqviAjhXia5qey8dhPu7LMOze94P8.jk8HeTEVBVzs8ai1hfR.', 'Test', 'Testovic', 'avatar.png'),
-('verka@gmail.com', '$2y$10$qs4ZYDRz3gQquLWqQfdq0uZz95fDq8XCtZv2WIOmVQD2MHNAvRlJS', 'Verka', 'Zverka', 'avatar2.png');
+('djordje@gmail.com', '$2y$10$oAhqEJrayP4vJt3x/j4dD.XjPU8KR1svFlOBis96rnSvKsWqgjpXW', 'Djordje', 'Petrovic', 'avatar.png');
 
 -- --------------------------------------------------------
 
@@ -84,17 +68,7 @@ CREATE TABLE `tema` (
   `opis_teme` text NOT NULL,
   `datum_kreiranja` datetime NOT NULL,
   `kreator` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tema`
---
-
-INSERT INTO `tema` (`id`, `naziv_teme`, `opis_teme`, `datum_kreiranja`, `kreator`) VALUES
-(14, 'nova tema', 'Proba', '2022-11-11 00:00:00', 'admin@gmail.com'),
-(15, 'Proba2', 'Proba', '2022-11-11 00:08:00', 'admin@gmail.com'),
-(19, 'IDe gass', 'siuuuuuuuuuuuuuuuu', '2022-11-16 08:05:00', 'pedja@gmail.com'),
-(20, 'OET', 'Osnove elektrotehnike', '2022-11-16 09:09:00', 'verka@gmail.com');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -126,13 +100,13 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT for table `komentari`
 --
 ALTER TABLE `komentari`
-  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

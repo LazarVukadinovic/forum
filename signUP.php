@@ -1,9 +1,3 @@
-<?php
-    session_start();
-    include "./connection.php";
-
-?>
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,14 +10,13 @@
         <link rel="stylesheet" href="./styles/login-signin.css">
     </head>
     <body>
-        <?php include "./handling/formSubmit.php"?>
         <?php include "./elements/navbar.php";?>
         <div class="container mt-3">
             <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card my-5">
 
-                <form  method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="card-body cardbody-color p-lg-5">
+                <form  method="POST" action="./handlers/signupHandler.php" class="card-body cardbody-color p-lg-5">
 
                     <div class="text-center">
                         <h3>NAPRAVITE NALOG</h3>
@@ -57,31 +50,6 @@
             </div>
             </div>
         </div>
-        <?php 
-            if(!empty($_SESSION["user"]) && !empty($_SESSION["userPassword"]) && !empty($rpassword) && ($_SESSION["userPassword"] == $rpassword) && !empty($ime) && !empty($prezime))
-            {
-                $user = $_SESSION["user"];
-                $password = $_SESSION["userPassword"];
-                $sqlCheck = "SELECT korisnicko_ime FROM korisnik WHERE korisnicko_ime = '" . $user . "'";
-                $resultCheck = $conn->query($sqlCheck);
-                if($resultCheck->num_rows > 0)
-                {
-                    $_SESSION["loggedIn"] = 0;
-                    $_SESSION["user"] = "";
-                    $_SESSION["userPassword"] = "";
-                    echo "<script>alert('Nalog vec postoji');</script>";
-                }
-                else
-                {
-                    echo "ulaz";
-                    $sqlInsert = 'INSERT INTO korisnik (korisnicko_ime, lozinka, ime, prezime, slika)
-                    VALUES("' . $user . '", "' . password_hash($password, PASSWORD_BCRYPT) . '", "' . $ime . '", "' . $prezime .'", "avatar.png" )';
-                    $conn->query($sqlInsert);
-                    $_SESSION["loggedIn"] = 1;
-                    header('Location: http://nemanaziv.com/index.php');
-                }
-            }
-        ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

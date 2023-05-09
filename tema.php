@@ -3,9 +3,9 @@
     session_start();
     include "./connection.php";
 
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == 0)
+    if(!isset($_SESSION["username"]))
     {
-        header('Location: http://nemanaziv.com/index.php');
+        header('Location: ./');
     }
 ?>
 
@@ -70,7 +70,7 @@
             if(!empty($naziv) && !empty($opis)){
                 $datum = date("Y-m-d H:i");
                 $sql = "INSERT INTO tema (naziv_teme, opis_teme, datum_kreiranja, kreator)
-                VALUES('" . $naziv . "', '" . $opis . "', '" . $datum . "', '" . $_SESSION["user"] . "')";
+                VALUES('" . $naziv . "', '" . $opis . "', '" . $datum . "', '" . $_SESSION["username"] . "')";
                 $conn->query($sql);
                 $naziv = $opis = $vreme = "";
             }
